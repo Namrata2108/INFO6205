@@ -60,8 +60,8 @@ public class Timer {
         // TO BE IMPLEMENTED: note that the timer is running when this method is called and should still be running when it returns.
         for(int i=0;i<n;i++)
         {
-//            if(i!=0)            //if timer is just started so why to resume it
-//            {  resume();  }
+            //if(i!=0)            if timer is just started so why to resume it
+            //{  resume();  }
             if(preFunction!=null)
             {    preFunction.apply(supplier.get());}
             resume();
@@ -75,8 +75,8 @@ public class Timer {
         double count= meanLapTime();
         resume();   //don't pause bcoz it is mentioned to resume the clock
         return count;
-//        long end=getClock();
-//        return toMillisecs((end-start)/n);
+        // long end=getClock();
+        //return toMillisecs((end-start)/n);
     }
 
     /**
