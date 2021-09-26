@@ -8,6 +8,7 @@ import edu.neu.coe.info6205.sort.Helper;
 import edu.neu.coe.info6205.sort.SortWithHelper;
 import edu.neu.coe.info6205.util.Config;
 
+
 public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
 
     /**
@@ -16,6 +17,8 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
      * @param description the description.
      * @param N           the number of elements expected.
      * @param config      the configuration.
+     *
+     *                    X extends Table t;
      */
     protected InsertionSort(String description, int N, Config config) {
         super(description, N, config);
@@ -44,7 +47,8 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
         super(helper);
     }
 
-    public InsertionSort() {
+    public InsertionSort()
+    {
         this(BaseHelper.getHelper(InsertionSort.class));
     }
 
@@ -55,9 +59,37 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
      * @param from the index of the first element to sort
      * @param to   the index of the first element not to sort
      */
-    public void sort(X[] xs, int from, int to) {
+    public void sort(X[] xs, int from, int to)
+    {
         final Helper<X> helper = getHelper();
-
+        for(int i=from+1;i<to;i++)
+        {
+            //X temp=xs[i];
+            int j = i-1;
+            while (j>=from )
+            {
+                if(helper.swapStableConditional(xs,j+1))
+                //xs[j+1] = xs[j];
+                {
+                    j = j-1;
+                }
+                else
+                    break;
+            }
+                //xs[j+1] = temp;
+        }
+        /*for(int i=from; i<to;i++)
+        {
+            X temp=xs[i];
+            int l=i-1;
+            //X count=xs[l];
+            while(l>=from && (xs[l]>temp))
+            {
+                xs[l+1]=xs[l];
+                l=l-1;
+            }
+            xs[l+1]=temp;
+        }*/
         // TO BE IMPLEMENTED
     }
 
