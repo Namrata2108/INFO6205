@@ -12,7 +12,8 @@ import java.util.Arrays;
 /**
  * Height-weighted Quick Union with Path Compression
  */
-public class UF_HWQUPC implements UF {
+public class UF_HWQUPC implements UF
+{
     /**
      * Ensure that site p is connected to site q,
      *
