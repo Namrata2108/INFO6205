@@ -5,8 +5,8 @@ public class assignment3
     public static void main(String[] args)
     {
         int p, q;
-        Scanner s = new Scanner(System.in);
-        long N = s.nextLong();
+        Scanner ip = new Scanner(System.in);
+        long N = ip.nextLong();
         UF_HWQUPC uf = new UF_HWQUPC((int) N);
         int count=0;
         int temp= uf.components();
