@@ -148,6 +148,12 @@ public class BaseHelper<X extends Comparable<X>> implements Helper<X> {
         else throw new HelperException("Helper: n is already set to a different value");
     }
 
+    @Override
+    public boolean swapStableConditional(X x, X temp)
+    {
+        return false;
+    }
+
     public int getN() {
         return n;
     }

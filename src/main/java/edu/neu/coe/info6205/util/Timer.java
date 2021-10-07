@@ -28,6 +28,8 @@ public class Timer {
         }
         pause();
         return meanLapTime();
+        //timer.process();
+
     }
 
     /**
