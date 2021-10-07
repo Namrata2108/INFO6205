@@ -1,6 +1,5 @@
 package edu.neu.coe.info6205.union_find;
 import java.util.Scanner;
-
 public class assignment3
 {
     public static void main(String[] args)
@@ -26,5 +25,4 @@ public class assignment3
         }
         System.out.println("Number of connections: "+ count);
     }
-
 }
