@@ -23,6 +23,6 @@ public class assignment3
             count++;
             temp= uf.components();
         }
-        System.out.println("Number of connections: "+ count);
+        System.out.println("Number of pairs: "+ count);
     }
 }
