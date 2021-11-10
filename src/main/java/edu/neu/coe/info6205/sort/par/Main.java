@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.*;
 
 /**
  * This code has been fleshed out by Ziyao Qiao. Thanks very much.
@@ -18,23 +18,32 @@ public class Main {
 
     public static void main(String[] args) {
         processArgs(args);
+
         System.out.println("Degree of parallelism: " + ForkJoinPool.getCommonPoolParallelism());
         Random random = new Random();
-        int[] array = new int[2000000];
+        int[] array = new int[10_000_000];
+        System.out.println("array size: "+array.length);
+        //int [] threadcount={2,4,8,16,64};
+
+        ForkJoinPool pool= new ForkJoinPool(8);
+        System.out.println("Value of ForkJoinPool :8 ");
         ArrayList<Long> timeList = new ArrayList<>();
-        for (int j = 50; j < 100; j++) {
-            ParSort.cutoff = 10000 * (j + 1);
+        for (int j = 50; j < 51; j++)
+        {
+            ParSort.cutoff = 50_000 * (j + 1);
+            System.out.println("cutoff: "+ParSort.cutoff);
             // for (int i = 0; i < array.length; i++) array[i] = random.nextInt(10000000);
             long time;
             long startTime = System.currentTimeMillis();
-            for (int t = 0; t < 10; t++) {
+            for (int t = 0; t < 1; t++)
+            {
                 for (int i = 0; i < array.length; i++) array[i] = random.nextInt(10000000);
-                ParSort.sort(array, 0, array.length);
+                ParSort.sort(array, 0, array.length, pool);
+
             }
             long endTime = System.currentTimeMillis();
             time = (endTime - startTime);
             timeList.add(time);
-
 
             System.out.println("cutoff：" + (ParSort.cutoff) + "\t\t10times Time:" + time + "ms");
 
@@ -78,6 +87,7 @@ public class Main {
                 ForkJoinPool.getCommonPoolParallelism();
     }
 
+
     private static void setConfig(String x, int i) {
         configuration.put(x, i);
     }
@@ -87,3 +97,4 @@ public class Main {
 
 
 }
+
